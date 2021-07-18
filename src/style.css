@@ -1,3 +1,79 @@
-body {
-    background-color: bisque;
+*,
+*::before,
+*::after {
+  box-sizing: border-box
+}
+
+html {
+  font-family: sans-serif;
+  font-size: 1rem;
+  color: #444;
+}
+
+.container {
+  max-width: 450px;
+  margin: 2rem auto;
+  border: 2px solid rgba(0, 0, 0, 0.17);
+  border-radius: 0.5em;
+}
+
+form input{
+  width: 100%;
+  border: none;
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: italic;
+  color: rgba(0, 0, 0, 0.54);
+  padding: 1.4em;
+}
+
+h1 {
+  color: #222;
+  font-size: 1.3rem;
+  font-weight: 400;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.27);
+  padding: 1em;
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  padding: 0.4em 1em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.27);
+  border-top: 1px solid rgba(0, 0, 0, 0.27);
+}
+
+li span {
+  display: inline-block;
+  padding: .5rem;
+  width: 250px;
+  border-radius: 4px;
+  border: 2px solid transparent;
+}
+
+li span:hover {
+  background: rgba(179, 215, 255, 0.52);
+}
+
+li span:focus {
+  outline: 0;
+  border: 2px solid #007bff;
+  background: rgba(179, 207, 255, 0.52)
+}
+
+.todo-clear {
+  color: #222;
+  font-size: 1rem;
+  text-align: center;
+  font-weight: 400;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.27);
+  padding: 1em;
+  margin: 0;
+  color: rgba(0, 0, 0, 0.54);
 }
