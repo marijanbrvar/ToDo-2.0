@@ -1,3 +1,5 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css");
+
 *,
 *::before,
 *::after {
@@ -15,6 +17,20 @@ html {
   margin: 2rem auto;
   border: 2px solid rgba(0, 0, 0, 0.17);
   border-radius: 0.5em;
+  padding: 0;
+}
+
+.input-field {
+  position: relative;
+  padding-right:  1.5em;
+}
+
+.field-icon {
+  position: absolute;
+  right: 0;
+  padding: auto 0;
+  margin: 1.5em;
+  color: rgba(0, 0, 0, 0.27);
 }
 
 form input{
@@ -24,16 +40,37 @@ form input{
   font-weight: 400;
   font-style: italic;
   color: rgba(0, 0, 0, 0.54);
-  padding: 1.4em;
+  padding: 1em 1.4em;
 }
 
-h1 {
+.header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.27);
+  align-items: center;
+  padding-right: 1.5em;
+}
+
+.title {
   color: #222;
   font-size: 1.3rem;
   font-weight: 400;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.27);
   padding: 1em;
   margin: 0;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+}
+
+.todo-item input {
+  margin: 1em;
+}
+
+.todo-item p {
+  margin: 0;
+  font-size: 1.1rem;
 }
 
 ul {
@@ -44,6 +81,7 @@ ul {
 li {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 0.4em 1em;
   border-bottom: 1px solid rgba(0, 0, 0, 0.27);
   border-top: 1px solid rgba(0, 0, 0, 0.27);
@@ -76,4 +114,5 @@ li span:focus {
   padding: 1em;
   margin: 0;
   color: rgba(0, 0, 0, 0.54);
+  background: rgba(0, 0, 0, 0.02);
 }
