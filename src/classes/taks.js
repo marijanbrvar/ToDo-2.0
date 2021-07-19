@@ -1,8 +1,9 @@
 /* eslint-disable no-restricted-syntax */
+const LOCAL_STORAGE_JOB_LIST_KEY = 'tasks';
 class Task {
   constructor(element) {
     this.listItem = element;
-    this.todos = [];
+    this.todos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_JOB_LIST_KEY)) || [];
   }
 
   init() {
@@ -48,6 +49,7 @@ class Task {
   newTaskEventListener() {
     this.form = document.querySelector('FORM');
     this.form.addEventListener('submit', (e) => {
+      console.log(e.target);
       e.preventDefault();
       this.add(e.target.addTodo.value);
       this.form.reset();
