@@ -27,6 +27,17 @@ module.exports = {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
+      {
+        test: /\.svg$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              encoding: false,
+            },
+          },
+        ],
+      },
     ],
   },
   plugins: [

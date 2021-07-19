@@ -1,3 +1,8 @@
+/* eslint-disable no-unused-vars */
 import './style.css';
+import Task from './classes/taks';
 
-console.log('Webpack work');
+const todoList = document.querySelector('#todoList');
+
+const listBinding = new Task(todoList);
+listBinding.init();
