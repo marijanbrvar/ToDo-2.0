@@ -58,7 +58,7 @@ webpack will automatically open the default browser, and you can start using the
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](./ToDo-2.0/issues).
+Feel free to check the [issues page](issues).
 
 ## Show your support
 
