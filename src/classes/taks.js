@@ -43,6 +43,15 @@ class Task {
     this.todos.push(task);
     this.update();
   }
+
+  newTaskEventListener() {
+    this.form = document.querySelector('FORM');
+    this.form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      this.add(e.target.addTodo.value);
+      this.form.reset();
+    });
+  }
 }
 
 module.exports = Task;
