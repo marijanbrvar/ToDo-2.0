@@ -7,6 +7,7 @@ class Task {
 
   init() {
     this.update();
+    this.newTaskEventListener();
     this.add("Don't forget Milk");
     this.add("Don't forget Cigaretes");
   }
