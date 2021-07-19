@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+*:focus {
+  outline: none;
+}
+
 html {
   font-family: sans-serif;
   font-size: 1rem;
@@ -40,7 +44,7 @@ form input {
   font-weight: 400;
   font-style: italic;
   color: rgba(0, 0, 0, 0.54);
-  padding: 1em;
+  padding: 1em 0 1em 1em;
 }
 
 .header {
