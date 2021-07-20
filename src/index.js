@@ -9,8 +9,9 @@ class App {
     this.task = task;
     this.view = view;
 
-    this.view.bindAddTask(this.handleAddTask);
     this.task.bindTaskListChange(this.onTaskListChanged);
+    this.view.bindAddTask(this.handleAddTask);
+    this.view.bindToggleTask(this.handleToggleTask);
 
     this.onTaskListChanged(this.task.tasks);
   }
@@ -21,6 +22,10 @@ class App {
 
   handleAddTask = (taskText) => {
     this.task.addTask(taskText);
+  }
+
+  handleToggleTask = (id) => {
+    this.task.toggleTask(id);
   }
 }
 

@@ -26,6 +26,7 @@ module.exports = class View {
         taskItem.className = 'todo-item';
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
+        checkbox.id = task.index;
         checkbox.checked = task.completed;
         const dragger = document.createElement('div', 'todo-drag');
         dragger.innerHTML = '<i class="bi bi-grip-vertical"></i>';
@@ -34,6 +35,7 @@ module.exports = class View {
         span.classList.add('editable');
 
         if (task.completed) {
+          console.log(task);
           const strike = document.createElement('s');
           strike.textContent = task.description;
           span.append(strike);
@@ -56,6 +58,16 @@ module.exports = class View {
       if (this.taskText) {
         handler(this.taskText);
         this.form.reset();
+      }
+    });
+  }
+
+  bindToggleTask(handler) {
+    this.taskList.addEventListener('change', (e) => {
+      if (e.target.type === 'checkbox') {
+        const id = parseInt(e.target.id, 10);
+
+        handler(id);
       }
     });
   }

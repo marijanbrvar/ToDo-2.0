@@ -1,8 +1,6 @@
 module.exports = class Task {
   constructor() {
     this.tasks = JSON.parse(localStorage.getItem('tasks')) || [
-      { index: 1, description: "Don't forget Milk!", completed: false },
-      { index: 2, description: "Don't forget Cigaretes!", completed: true },
     ];
   }
 
@@ -23,6 +21,20 @@ module.exports = class Task {
     };
 
     this.tasks.push(task);
+    this.commit(this.tasks);
+  }
+
+  toggleTask(index) {
+    this.tasks = this.tasks.map((task) => {
+      if (task.index === index) {
+        return {
+          index: task.index,
+          description: task.description,
+          completed: !task.completed,
+        };
+      } return task;
+    });
+    console.log(this.tasks);
     this.commit(this.tasks);
   }
 };
