@@ -1,30 +1,86 @@
+/* eslint-disable max-classes-per-file */
 /* eslint-disable no-unused-vars */
 import './style.css';
-import Task from './classes/taks';
-import Completed from './classes/completed';
 
-const todoList = document.querySelector('#todoList');
-
-// const listBinding = new Task(todoList);
-// listBinding.init();
-
-class App {
+class Task {
   constructor() {
-    this.task = new Task(todoList);
-    this.completed = new Completed(this.task.todos);
+    this.tasks = [
+      { index: 1, description: "Don't forget Milk!", completed: false },
+      { index: 2, description: "Don't forget Cigaretes!", completed: true },
+    ];
   }
 
-  init() {
-    this.task.init();
-    this.completed.init(this.bindChekmark);
-  }
+  addTask(taskText) {
+    const task = {
+      index: this.tasks.length > 0 ? this.tasks[this.task.length - 1].index + 1 : 1,
+      description: taskText,
+      completed: false,
+    };
 
-  // eslint-disable-next-line class-methods-use-this
-  bindChekmark(handler) {
-    // console.log(handler);
-    Task.bindToggle(handler);
+    this.task.push(task);
   }
 }
 
-const app = new App();
-app.init();
+class View {
+  constructor() {
+    this.taskList = document.querySelector('#todoList');
+    this.input = document.querySelector('input[name=todo]');
+  }
+
+  get taskText() {
+    return this.input.value;
+  }
+
+  displayTasks(tasks) {
+    while (this.taskList.firstChild) {
+      this.taskList.removeChild(this.taskList.firstChild);
+    }
+
+    if (tasks.length === 0) {
+      const li = document.createElement('li');
+      li.textContent = 'Nothing to do! Add a task?';
+      this.taskList.append(li);
+    } else {
+      tasks.forEach((task) => {
+        const li = document.createElement('li');
+        li.id = task.index;
+        const taskItem = document.createElement('div');
+        taskItem.className = 'todo-item';
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.checked = task.completed;
+        const dragger = document.createElement('div', 'todo-drag');
+        dragger.innerHTML = '<i class="bi bi-grip-vertical"></i>';
+        const span = document.createElement('span');
+        span.contentEditable = true;
+        span.classList.add('editable');
+
+        if (task.completed) {
+          const strike = document.createElement('s');
+          strike.textContent = task.description;
+          span.append(strike);
+        } else {
+          span.textContent = task.description;
+        }
+
+        taskItem.append(checkbox, span);
+        li.append(taskItem, dragger);
+        this.taskList.append(li);
+      });
+    }
+  }
+}
+class App {
+  constructor(task, view) {
+    this.task = task;
+    this.view = view;
+
+    this.onTaskListChange(this.task.tasks);
+  }
+
+  onTaskListChange = (tasks) => {
+    this.view.displayTasks(tasks);
+  }
+}
+
+const app = new App(new Task(), new View());
