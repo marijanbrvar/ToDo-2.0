@@ -1,5 +1,6 @@
 module.exports = class View {
   constructor() {
+    this.form = document.querySelector('FORM');
     this.taskList = document.querySelector('#todoList');
     this.input = document.querySelector('input[name=todo]');
   }
@@ -45,5 +46,17 @@ module.exports = class View {
         this.taskList.append(li);
       });
     }
+    console.log(tasks);
+  }
+
+  bindAddTask(handler) {
+    this.form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      if (this.taskText) {
+        handler(this.taskText);
+        this.form.reset();
+      }
+    });
   }
 };
