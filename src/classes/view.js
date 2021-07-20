@@ -35,7 +35,6 @@ module.exports = class View {
         span.classList.add('editable');
 
         if (task.completed) {
-          console.log(task);
           const strike = document.createElement('s');
           strike.textContent = task.description;
           span.append(strike);
@@ -48,7 +47,6 @@ module.exports = class View {
         this.taskList.append(li);
       });
     }
-    console.log(tasks);
   }
 
   bindAddTask(handler) {

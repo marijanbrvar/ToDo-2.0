@@ -34,7 +34,6 @@ module.exports = class Task {
         };
       } return task;
     });
-    console.log(this.tasks);
     this.commit(this.tasks);
   }
 };
