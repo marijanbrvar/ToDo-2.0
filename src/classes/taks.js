@@ -9,15 +9,15 @@ class Task {
   init() {
     this.update();
     this.newTaskEventListener();
-    this.add("Don't forget Milk");
-    this.add("Don't forget Cigaretes");
+    // this.add("Don't forget Milk");
+    // this.add("Don't forget Cigaretes");
   }
 
   create(task) {
     this.li = document.createElement('li');
     this.li.innerHTML = `
       <div class="todo-item">
-        <input type="checkbox" class="todo-check">
+        <input type="checkbox" class="todo-check" id="${task.index}">
         <p class="todo-text">${task.decription}</p>
       </div>
       <div class="todo-drag"><i class="bi bi-grip-vertical"></i></div>
@@ -33,6 +33,8 @@ class Task {
     for (const description of this.todos) {
       this.listItem.appendChild(this.create(description));
     }
+
+    localStorage.setItem(LOCAL_STORAGE_JOB_LIST_KEY, JSON.stringify(this.todos));
   }
 
   add(decription) {
@@ -49,11 +51,16 @@ class Task {
   newTaskEventListener() {
     this.form = document.querySelector('FORM');
     this.form.addEventListener('submit', (e) => {
-      console.log(e.target);
       e.preventDefault();
-      this.add(e.target.addTodo.value);
-      this.form.reset();
+      if (e.target.addTodo.value !== '') {
+        this.add(e.target.addTodo.value);
+        this.form.reset();
+      }
     });
+  }
+
+  static bindToggle(todoList) {
+    this.todos = todoList;
   }
 }
 

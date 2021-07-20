@@ -11,12 +11,18 @@ const todoList = document.querySelector('#todoList');
 class App {
   constructor() {
     this.task = new Task(todoList);
-    this.completed = new Completed();
+    this.completed = new Completed(this.task.todos);
   }
 
   init() {
     this.task.init();
-    this.completed.init();
+    this.completed.init(this.bindChekmark);
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  bindChekmark(handler) {
+    // console.log(handler);
+    Task.bindToggle(handler);
   }
 }
 
