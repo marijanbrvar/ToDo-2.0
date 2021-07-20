@@ -9,11 +9,18 @@ class App {
     this.task = task;
     this.view = view;
 
-    this.onTaskListChange(this.task.tasks);
+    this.view.bindAddTask(this.handleAddTask);
+    this.task.bindTaskListChange(this.onTaskListChanged);
+
+    this.onTaskListChanged(this.task.tasks);
   }
 
-  onTaskListChange = (tasks) => {
+  onTaskListChanged = (tasks) => {
     this.view.displayTasks(tasks);
+  }
+
+  handleAddTask = (taskText) => {
+    this.task.addTask(taskText);
   }
 }
 
