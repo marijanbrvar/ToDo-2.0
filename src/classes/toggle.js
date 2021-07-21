@@ -4,15 +4,8 @@ module.exports = class Toggle {
   }
 
   toggleTask(index, tasks) {
-    this.tasks = tasks.map((task) => {
-      if (task.index === index) {
-        return {
-          index: task.index,
-          description: task.description,
-          completed: !task.completed,
-        };
-      } return task;
-    });
+    this.tasks = tasks;
+    this.tasks[index].completed = !this.tasks[index].completed
     return this.tasks;
   }
 };
