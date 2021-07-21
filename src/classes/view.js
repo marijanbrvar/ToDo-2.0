@@ -22,6 +22,7 @@ module.exports = class View {
       tasks.forEach((task) => {
         const li = document.createElement('li');
         li.id = task.index;
+        li.draggable = true;
         const taskItem = document.createElement('div');
         taskItem.className = 'todo-item';
         const checkbox = document.createElement('input');

@@ -59,6 +59,15 @@ form input {
   color: rgba(0, 0, 0, 0.27);
 }
 
+.active {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.dragged {
+  background: rgba(0, 0, 0, 0.17);
+  opacity: 0.2;
+}
+
 .title {
   color: #222;
   font-size: 1.2rem;

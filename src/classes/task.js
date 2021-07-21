@@ -15,7 +15,7 @@ module.exports = class Task {
 
   addTask(taskText) {
     const task = {
-      index: this.tasks.length > 0 ? this.tasks[this.tasks.length - 1].index + 1 : 1,
+      index: this.tasks.length > 0 ? this.tasks[this.tasks.length - 1].index + 1 : 0,
       description: taskText,
       completed: false,
     };

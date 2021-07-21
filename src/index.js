@@ -1,19 +1,22 @@
-/* eslint-disable max-classes-per-file */
 /* eslint-disable no-unused-vars */
 import './style.css';
 import Task from './classes/task';
 import View from './classes/view';
+import Dnd from './classes/dnd';
 
 class App {
-  constructor(task, view) {
+  constructor(task, view, dnd) {
     this.task = task;
     this.view = view;
+    this.dnd = dnd;
 
     this.task.bindTaskListChange(this.onTaskListChanged);
     this.view.bindAddTask(this.handleAddTask);
     this.view.bindToggleTask(this.handleToggleTask);
 
     this.onTaskListChanged(this.task.tasks);
+
+    this.dnd.sort();
   }
 
   onTaskListChanged = (tasks) => {
@@ -29,4 +32,4 @@ class App {
   }
 }
 
-const app = new App(new Task(), new View());
+const app = new App(new Task(), new View(), new Dnd());
