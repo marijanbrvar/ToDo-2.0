@@ -1,7 +1,9 @@
 module.exports = class Dnd {
-  sort() {
+  sort(handler) {
     const items = document.querySelectorAll('li');
     this.current = null;
+    this.currentpos = 0;
+    this.droppedpos = 0;
 
     items.forEach((item) => {
       item.addEventListener('dragstart', (e) => {
@@ -31,19 +33,18 @@ module.exports = class Dnd {
 
       item.addEventListener('drop', (e) => {
         e.preventDefault();
-
         if (e.target !== this.current) {
-          let currentpos = 0; let droppedpos = 0;
           const all = document.querySelectorAll('li');
           for (let it = 0; it < all.length; it += 1) {
-            if (this.current === all[it]) { currentpos = it; }
-            if (e.target === all[it]) { droppedpos = it; }
+            if (this.current === all[it]) { this.currentpos = it; }
+            if (e.target === all[it]) { this.droppedpos = it; }
           }
-          if (currentpos < droppedpos) {
+          if (this.currentpos < this.droppedpos) {
             e.target.parentNode.insertBefore(this.current, e.target.nextSibling);
           } else {
             e.target.parentNode.insertBefore(this.current, e.target);
           }
+          handler(this.currentpos, this.droppedpos);
         }
       });
     });

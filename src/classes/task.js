@@ -9,8 +9,20 @@ module.exports = class Task {
   }
 
   commit(tasks) {
-    this.onTaskListChanged(tasks);
     localStorage.setItem('tasks', JSON.stringify(tasks));
+    this.onTaskListChanged(tasks);
+    window.location.reload();
+  }
+
+  sort(curr, drop) {
+    const current = this.tasks[curr];
+    const replaced = this.tasks[drop];
+
+    current.index = drop;
+    replaced.index = curr;
+    this.tasks.splice(drop, 1, current);
+    this.tasks.splice(curr, 1, replaced);
+    this.commit(this.tasks);
   }
 
   addTask(taskText) {

@@ -18,7 +18,8 @@ class App {
 
     this.onTaskListChanged(this.task.tasks);
 
-    this.dnd.sort();
+    this.dnd.sort(this.hendleDndTask);
+    // this.sort = this.dnd.sort();
   }
 
   onTaskListChanged = (tasks) => {
@@ -32,6 +33,10 @@ class App {
   handleToggleTask = (id) => {
     const toggle = this.toggle.toggleTask(id, this.task.tasks);
     this.task.commit(toggle);
+  }
+
+  hendleDndTask = (currentpos, droppedpos) => {
+    this.task.sort(currentpos, droppedpos);
   }
 }
 
