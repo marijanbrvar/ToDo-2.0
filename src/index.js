@@ -3,12 +3,14 @@ import './style.css';
 import Task from './classes/task';
 import View from './classes/view';
 import Dnd from './classes/dnd';
+import Toggle from './classes/toggle';
 
 class App {
-  constructor(task, view, dnd) {
+  constructor(task, view, dnd, toggle) {
     this.task = task;
     this.view = view;
     this.dnd = dnd;
+    this.toggle = toggle;
 
     this.task.bindTaskListChange(this.onTaskListChanged);
     this.view.bindAddTask(this.handleAddTask);
@@ -28,8 +30,9 @@ class App {
   }
 
   handleToggleTask = (id) => {
-    this.task.toggleTask(id);
+    const toggle = this.toggle.toggleTask(id, this.task.tasks);
+    this.task.commit(toggle);
   }
 }
 
-const app = new App(new Task(), new View(), new Dnd());
+const app = new App(new Task(), new View(), new Dnd(), new Toggle());
