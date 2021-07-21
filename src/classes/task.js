@@ -18,8 +18,6 @@ module.exports = class Task {
     const current = this.tasks[curr];
     const replaced = this.tasks[drop];
 
-    current.index = drop;
-    replaced.index = curr;
     this.tasks.splice(drop, 1, current);
     this.tasks.splice(curr, 1, replaced);
     this.commit(this.tasks);
