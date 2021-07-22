@@ -11,7 +11,7 @@ module.exports = class Task {
   commit(tasks) {
     localStorage.setItem('tasks', JSON.stringify(tasks));
     this.onTaskListChanged(tasks);
-    window.location.reload();
+    // window.location.reload();
   }
 
   sort(curr, drop) {
@@ -32,5 +32,27 @@ module.exports = class Task {
 
     this.tasks.push(task);
     this.commit(this.tasks);
+  }
+
+  editTask(index, updatedDescritpion) {
+    const id = this.tasks.findIndex((item) => item.index === index);
+    this.tasks[id].description = updatedDescritpion;
+
+    this.commit(this.tasks);
+  }
+
+  deleteTask(index) {
+    this.tasks = this.tasks.filter((task) => task.index !== parseInt(index, 10));
+    const newTaskList = [];
+    this.tasks.map((task, i) => {
+      const newTask = {
+        index: i,
+        description: task.description,
+        completed: task.completed,
+      };
+      return newTaskList.push(newTask);
+    });
+
+    this.commit(newTaskList);
   }
 };

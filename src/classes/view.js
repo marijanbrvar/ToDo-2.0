@@ -3,6 +3,9 @@ module.exports = class View {
     this.form = document.querySelector('FORM');
     this.taskList = document.querySelector('#todoList');
     this.input = document.querySelector('input[name=todo]');
+
+    this.tempTaskDescription = '';
+    this.initEditListener();
   }
 
   get taskText() {
@@ -29,7 +32,8 @@ module.exports = class View {
         checkbox.type = 'checkbox';
         checkbox.id = task.index;
         checkbox.checked = task.completed;
-        const dragger = document.createElement('div', 'todo-drag');
+        const dragger = document.createElement('div');
+        dragger.className = 'todo-drag';
         dragger.innerHTML = '<i class="bi bi-grip-vertical"></i>';
         const span = document.createElement('span');
         span.contentEditable = true;
@@ -43,11 +47,24 @@ module.exports = class View {
           span.textContent = task.description;
         }
 
+        const deleteButton = document.createElement('button');
+        deleteButton.classList.add('task-delete');
+        deleteButton.id = task.index;
+        deleteButton.innerHTML = '<i class="bi bi-trash"></i>';
+
         taskItem.append(checkbox, span);
-        li.append(taskItem, dragger);
+        li.append(taskItem, dragger, deleteButton);
         this.taskList.append(li);
       });
     }
+  }
+
+  initEditListener() {
+    this.taskList.addEventListener('keyup', (e) => {
+      if (e.target.className === 'editable') {
+        this.tempTaskDescription = e.target.innerText;
+      }
+    });
   }
 
   bindAddTask(handler) {
@@ -66,6 +83,26 @@ module.exports = class View {
       if (e.target.type === 'checkbox') {
         const id = parseInt(e.target.id, 10);
 
+        handler(id);
+      }
+    });
+  }
+
+  bindEditTask(handler) {
+    this.taskList.addEventListener('focusout', (e) => {
+      const { id } = e.target.parentNode.parentNode;
+      if (this.tempTaskDescription) {
+        const index = parseInt(id, 10);
+        handler(index, this.tempTaskDescription);
+        this.tempTaskDescription = '';
+      }
+    });
+  }
+
+  bindDeleteTask(handler) {
+    this.taskList.addEventListener('click', (e) => {
+      const { id } = e.target.parentNode;
+      if (e.target.parentNode.type === 'submit') {
         handler(id);
       }
     });

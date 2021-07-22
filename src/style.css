@@ -16,6 +16,8 @@ html {
   color: #444;
 }
 
+input, button, submit { border:none; }
+
 .container {
   max-width: 450px;
   margin: 2rem auto;
@@ -79,6 +81,7 @@ form input {
 .todo-item {
   display: flex;
   align-items: center;
+  flex-grow: 1;
 }
 
 .todo-item input {
@@ -115,6 +118,7 @@ li span {
   width: 250px;
   border-radius: 4px;
   border: 2px solid transparent;
+  width: 100%;
 }
 
 li span:hover {
@@ -136,4 +140,17 @@ li span:focus {
   margin: 0;
   color: rgba(0, 0, 0, 0.54);
   background: rgba(0, 0, 0, 0.02);
+}
+
+.task-delete {
+  background: none;
+  flex-shrink: 1;
+}
+
+.task-delete i {
+  color: rgba(0,0,0,0.54);
+}
+
+.hide {
+  display: none;
 }

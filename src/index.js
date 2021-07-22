@@ -15,6 +15,8 @@ class App {
     this.task.bindTaskListChange(this.onTaskListChanged);
     this.view.bindAddTask(this.handleAddTask);
     this.view.bindToggleTask(this.handleToggleTask);
+    this.view.bindDeleteTask(this.handleDeleteTask);
+    this.view.bindEditTask(this.handleEditTask);
 
     this.onTaskListChanged(this.task.tasks);
 
@@ -37,6 +39,14 @@ class App {
 
   hendleDndTask = (currentpos, droppedpos) => {
     this.task.sort(currentpos, droppedpos);
+  }
+
+  handleDeleteTask = (id) => {
+    this.task.deleteTask(id);
+  }
+
+  handleEditTask = (index, taskText) => {
+    this.task.editTask(index, taskText);
   }
 }
 
