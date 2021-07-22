@@ -2,7 +2,7 @@
 
 # ToDo 2.0 - To Do List app
 
-> In this project, you will build a simple HTML list of To Do tasks. The list will be styled according to the specifications listed later in this lesson. This simple web page is be built using webpack and served by a webpack dev server.
+> In this project, I will build a simple HTML/JS list of To Do tasks. The list will be styled according to the specifications listed later in this lesson. This simple web page is be built using webpack and served by a webpack dev server.
 
 ![screenshot](./app_screenshot.png)
 
