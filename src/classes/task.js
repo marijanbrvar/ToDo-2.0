@@ -11,7 +11,7 @@ module.exports = class Task {
   commit(tasks) {
     localStorage.setItem('tasks', JSON.stringify(tasks));
     this.onTaskListChanged(tasks);
-    // window.location.reload();
+    window.location.reload();
   }
 
   sort(curr, drop) {
