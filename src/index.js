@@ -17,6 +17,7 @@ class App {
     this.view.bindToggleTask(this.handleToggleTask);
     this.view.bindDeleteTask(this.handleDeleteTask);
     this.view.bindEditTask(this.handleEditTask);
+    this.view.bindClearCompletedTask(this.handleCompletedTask);
 
     this.onTaskListChanged(this.task.tasks);
 
@@ -47,6 +48,10 @@ class App {
 
   handleEditTask = (index, taskText) => {
     this.task.editTask(index, taskText);
+  }
+
+  handleCompletedTask = () => {
+    this.task.clearCompetedTasks();
   }
 }
 

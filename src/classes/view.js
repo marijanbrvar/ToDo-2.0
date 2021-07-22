@@ -107,4 +107,9 @@ module.exports = class View {
       }
     });
   }
+
+  bindClearCompletedTask(handler) {
+    this.clear = document.querySelector('.todo-clear');
+    this.clear.addEventListener('click', () => handler());
+  }
 };

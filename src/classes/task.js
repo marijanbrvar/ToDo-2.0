@@ -55,4 +55,9 @@ module.exports = class Task {
 
     this.commit(newTaskList);
   }
+
+  clearCompetedTasks() {
+    this.tasks = this.tasks.filter((task) => task.completed !== true);
+    this.commit(this.tasks);
+  }
 };
