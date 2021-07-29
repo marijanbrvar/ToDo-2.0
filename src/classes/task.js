@@ -53,6 +53,12 @@ export default class Task {
     this.commit(newTaskList);
   }
 
+  toggleTask(index) {
+    const id = this.tasks.findIndex((item) => item.index === index);
+    this.tasks[id].completed = !this.tasks[id].completed;
+    this.commit(this.tasks);
+  }
+
   clearCompetedTasks() {
     this.tasks = this.tasks.filter((task) => task.completed !== true);
     this.commit(this.tasks);
