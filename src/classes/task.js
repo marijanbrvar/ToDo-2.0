@@ -1,12 +1,14 @@
 /* eslint-disable class-methods-use-this */
-module.exports = class Task {
+import Store from './store';
+
+export default class Task {
   constructor() {
-    this.tasks = JSON.parse(localStorage.getItem('tasks')) || [
+    this.tasks = Store.get('tasks') || [
     ];
   }
 
   commit(tasks) {
-    localStorage.setItem('tasks', JSON.stringify(tasks));
+    Store.add('tasks', tasks);
   }
 
   sort(curr, drop) {
@@ -55,4 +57,4 @@ module.exports = class Task {
     this.tasks = this.tasks.filter((task) => task.completed !== true);
     this.commit(this.tasks);
   }
-};
+}
