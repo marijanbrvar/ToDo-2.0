@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 /* eslint-disable no-unused-vars */
 import './style.css';
 import Task from './classes/task';
@@ -5,54 +6,69 @@ import View from './classes/view';
 import Dnd from './classes/dnd';
 import Toggle from './classes/toggle';
 
-class App {
-  constructor(task, view, dnd, toggle) {
-    this.task = task;
-    this.view = view;
-    this.dnd = dnd;
-    this.toggle = toggle;
+const task = new Task();
+const view = new View();
 
-    this.task.bindTaskListChange(this.onTaskListChanged);
-    this.view.bindAddTask(this.handleAddTask);
-    this.view.bindToggleTask(this.handleToggleTask);
-    this.view.bindDeleteTask(this.handleDeleteTask);
-    this.view.bindEditTask(this.handleEditTask);
-    this.view.bindClearCompletedTask(this.handleCompletedTask);
+const displayTaskView = () => {
+  view.displayTasks(task.tasks);
+  view.bindAddTask(handleAddTask);
+  view.bindDeleteTask(handleDeleteTask);
+};
 
-    this.onTaskListChanged(this.task.tasks);
+displayTaskView();
 
-    this.dnd.sort(this.hendleDndTask);
-    // this.sort = this.dnd.sort();
-  }
+// class App {
+//   constructor(task, view, dnd, toggle) {
+//     this.task = task;
+//     this.view = view;
+//     this.dnd = dnd;
+//     this.toggle = toggle;
 
-  onTaskListChanged = (tasks) => {
-    this.view.displayTasks(tasks);
-  }
+//     this.task.bindTaskListChange(this.onTaskListChanged);
+//     this.view.bindAddTask(this.handleAddTask);
+//     this.view.bindToggleTask(this.handleToggleTask);
+//     this.view.bindDeleteTask(this.handleDeleteTask);
+//     this.view.bindEditTask(this.handleEditTask);
+//     this.view.bindClearCompletedTask(this.handleCompletedTask);
 
-  handleAddTask = (taskText) => {
-    this.task.addTask(taskText);
-  }
+//     this.onTaskListChanged(this.task.tasks);
 
-  handleToggleTask = (id) => {
-    const toggle = this.toggle.toggleTask(id, this.task.tasks);
-    this.task.commit(toggle);
-  }
+//     this.dnd.sort(this.hendleDndTask);
+//     // this.sort = this.dnd.sort();
+//   }
 
-  hendleDndTask = (currentpos, droppedpos) => {
-    this.task.sort(currentpos, droppedpos);
-  }
+//   onTaskListChanged = (tasks) => {
+//     this.view.displayTasks(tasks);
+//   }
 
-  handleDeleteTask = (id) => {
-    this.task.deleteTask(id);
-  }
+//   handleToggleTask = (id) => {
+//     const toggle = this.toggle.toggleTask(id, this.task.tasks);
+//     this.task.commit(toggle);
+//   }
 
-  handleEditTask = (index, taskText) => {
-    this.task.editTask(index, taskText);
-  }
+//   hendleDndTask = (currentpos, droppedpos) => {
+//     this.task.sort(currentpos, droppedpos);
+//   }
 
-  handleCompletedTask = () => {
-    this.task.clearCompetedTasks();
-  }
+//   handleDeleteTask = (id) => {
+//     this.task.deleteTask(id);
+//   }
+
+//   handleEditTask = (index, taskText) => {
+//     this.task.editTask(index, taskText);
+//   }
+
+//   handleCompletedTask = () => {
+//     this.task.clearCompetedTasks();
+//   }
+// }
+
+function handleAddTask(taskText) {
+  task.addTask(taskText);
+  displayTaskView();
 }
 
-const app = new App(new Task(), new View(), new Dnd(), new Toggle());
+function handleDeleteTask(id) {
+  task.deleteTask(id);
+  displayTaskView();
+}

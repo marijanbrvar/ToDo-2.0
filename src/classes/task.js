@@ -1,17 +1,12 @@
+/* eslint-disable class-methods-use-this */
 module.exports = class Task {
   constructor() {
     this.tasks = JSON.parse(localStorage.getItem('tasks')) || [
     ];
   }
 
-  bindTaskListChange(callback) {
-    this.onTaskListChanged = callback;
-  }
-
   commit(tasks) {
     localStorage.setItem('tasks', JSON.stringify(tasks));
-    this.onTaskListChanged(tasks);
-    window.location.reload();
   }
 
   sort(curr, drop) {
