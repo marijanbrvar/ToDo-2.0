@@ -54,6 +54,13 @@ webpack will automatically open the default browser, and you can start using the
 
 ![Marijan's GitHub stats](https://github-readme-stats.vercel.app/api?username=marijanbrvar&count_private=true&theme=dark&show_icons=true)
 
+👤 **Onesis Olea**
+
+- GitHub: [@2bleo](https://github.com/2bleO)
+- Twitter: [@OleaOnesis](https://twitter.com/OleaOnesis)
+- LinkedIn: [Onesis Olea](https://www.linkedin.com/in/onesis-olea)
+
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
