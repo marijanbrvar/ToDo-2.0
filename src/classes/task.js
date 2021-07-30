@@ -1,17 +1,14 @@
-module.exports = class Task {
+/* eslint-disable class-methods-use-this */
+import Store from './store';
+
+export default class Task {
   constructor() {
-    this.tasks = JSON.parse(localStorage.getItem('tasks')) || [
+    this.tasks = Store.get('tasks') || [
     ];
   }
 
-  bindTaskListChange(callback) {
-    this.onTaskListChanged = callback;
-  }
-
   commit(tasks) {
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-    this.onTaskListChanged(tasks);
-    window.location.reload();
+    Store.add('tasks', tasks);
   }
 
   sort(curr, drop) {
@@ -56,8 +53,14 @@ module.exports = class Task {
     this.commit(newTaskList);
   }
 
+  toggleTask(index) {
+    const id = this.tasks.findIndex((item) => item.index === index);
+    this.tasks[id].completed = !this.tasks[id].completed;
+    this.commit(this.tasks);
+  }
+
   clearCompetedTasks() {
     this.tasks = this.tasks.filter((task) => task.completed !== true);
     this.commit(this.tasks);
   }
-};
+}

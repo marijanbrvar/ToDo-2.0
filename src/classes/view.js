@@ -1,8 +1,10 @@
-module.exports = class View {
+import * as dom from './domUtil';
+
+export default class View {
   constructor() {
-    this.form = document.querySelector('FORM');
-    this.taskList = document.querySelector('#todoList');
-    this.input = document.querySelector('input[name=todo]');
+    this.form = dom.queryElement(document, 'FORM');
+    this.taskList = dom.queryElement(document, '#todoList');
+    this.input = dom.queryElement(document, 'input[name=todo]');
 
     this.tempTaskDescription = '';
     this.initEditListener();
@@ -112,4 +114,4 @@ module.exports = class View {
     this.clear = document.querySelector('.todo-clear');
     this.clear.addEventListener('click', () => handler());
   }
-};
+}

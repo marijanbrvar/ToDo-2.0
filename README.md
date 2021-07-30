@@ -37,6 +37,9 @@ To run code locally, please follow steps belove
 
 webpack will automatically open the default browser, and you can start using the ToDo web app. All data is stored locally, which means that all your job/tasks will stay present in the browser after the refresh.
 
+### Test
+To run test for add and remove task, you need to instal Jest or simply run `npm i`
+`npm test`
 ### Usage
 1. Add a new Job list by typing the name of the job in the left input field, then press enter or click to add button
 2. To enter a new task, which belongs to the currently selected list, click on the new button, then fill n the form.
@@ -53,6 +56,13 @@ webpack will automatically open the default browser, and you can start using the
 - LinkedIn: [LinkedIn](https://linkedin.com/in/marijanbrvar)
 
 ![Marijan's GitHub stats](https://github-readme-stats.vercel.app/api?username=marijanbrvar&count_private=true&theme=dark&show_icons=true)
+
+👤 **Onesis Olea**
+
+- GitHub: [@2bleo](https://github.com/2bleO)
+- Twitter: [@OleaOnesis](https://twitter.com/OleaOnesis)
+- LinkedIn: [Onesis Olea](https://www.linkedin.com/in/onesis-olea)
+
 
 ## 🤝 Contributing
 
